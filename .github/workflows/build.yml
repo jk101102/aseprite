@@ -115,21 +115,4 @@ jobs:
           D:/a/aseprite/aseprite/build/bin/data
           D:/a/aseprite/aseprite/build/bin/aseprite.exe
 
-    name: Generating Makefiles
-    shell: bash
-    run: |
-      if [[ "${{ runner.os }}" == "Windows"]]; then
-        export enable_ccache=off
-      else
-        export enable_ccache=on
-      fi
-      curl -L https://github.com/blueloveTH/aseprite/releases/download/v0.01/skia.zip --output skia.zip
-      7z x skia.zip
-      cmake-SB build G Ninja \
-        -DCMAKE_BUILD_TYPE=$${ matrix.build_type }$} \
-        -DENABLE_UI=$${ matrix.enable_ui }$} \
-        -DENABLE_CCACHE=$enable_ccache \
-        -DLAF_BACKEND=skia \
-        -DSKIA_DIR=./skia \
-        -DSKIA_LIBRARY_DIR=./skia/out/Release-x64 \
-        -DSKIA LIBRARY=./skia/out/Release-x64/skia.lib
+    
